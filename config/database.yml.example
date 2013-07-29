@@ -29,11 +29,21 @@ test:
   password: W3lc0m32F!
   host: localhost
 
-staging:
+qa:
   adapter: postgresql
   encoding: utf8
   reconnect: false
-  database: cihook_stag
+  database: cihook_qa
+  pool: 5
+  username: cihook
+  password: CsM2kYt1P10226A
+  host: localhost
+
+uat:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: cihook_uat
   pool: 5
   username: cihook
   password: CsM2kYt1P10226A
