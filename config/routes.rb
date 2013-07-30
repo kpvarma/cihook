@@ -7,7 +7,7 @@ Cihook::Application.routes.draw do
   resources :projects
   
   # Listen to Github hooks
-  get 'hooks/github/:project_id' => 'hooks/github#listen'
+  match 'hooks/github/:project_id' => 'hooks/github#listen'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
