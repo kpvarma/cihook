@@ -1,0 +1,37 @@
+
+<%# Displays to Manage the items %>
+<div class="row padding-top-10 margin-left-0">
+
+  <div class="six columns">
+    <%= content_tag :span, "Manage Projects", :class=>"font-size-24 bold text-color-grey" %>
+  </div>
+
+	<div id="div_project_filters" class="six columns">
+		<%= render :partial=>"filters" %>
+	</div>
+	<div class="cl-20"></div>
+</div>
+<%# Renders a partial to display all the projects %>
+<div class="row">
+	<div id="div_project_index" class="six columns">
+		<%= render :partial=>"index" %>
+	</div>
+
+	<div id="div_project_details" class="six columns">
+		<% case	params[:action] %>
+		<% when "new", "edit", "show" %>
+			<%= render :partial=>params[:action] %>
+		<% when "index" %>	
+			<% if @projects.empty? %>
+				<%= render :partial=>"summary" %>
+			<% else %>
+				<%= render :partial=>"show" %>	
+			<% end %>
+		<% else %>
+			<%= render :partial=>"summary" %>	
+		<% end %>
+	</div>
+	
+</div>
+
+

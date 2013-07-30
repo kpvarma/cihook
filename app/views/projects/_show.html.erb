@@ -1,0 +1,70 @@
+
+<%# Displays a detailed view of the project %>
+<%# Display Flash Message if any only in case of ajax request %>
+<% if request.xhr? %>
+	<%= render :partial=>"layouts/common/flash_message" %>
+<% end %>
+
+<div class="box padding-10">
+	
+	<div class="margin-10 text-color-blue font-size-24">
+		<%= @project.name %>
+	</div>
+  
+	<div class="row">
+		<%= content_tag :span, "Status:", :style=>"font-weight:bold", :class=>"five columns push_one" %>
+		<%= content_tag :span, @project.status, :class=>"six columns ext-color-grey" %>
+	</div>
+	<div class="row">
+		<%= content_tag :span, "Qa Url:", :style=>"font-weight:bold", :class=>"five columns push_one" %>
+		<%= content_tag :span, @project.qa_url, :class=>"six columns ext-color-grey" %>
+	</div>
+	<div class="row">
+		<%= content_tag :span, "Uat Url:", :style=>"font-weight:bold", :class=>"five columns push_one" %>
+		<%= content_tag :span, @project.uat_url, :class=>"six columns ext-color-grey" %>
+	</div>
+	<div class="row">
+		<%= content_tag :span, "Repo Url:", :style=>"font-weight:bold", :class=>"five columns push_one" %>
+		<%= content_tag :span, @project.repo_url, :class=>"six columns ext-color-grey" %>
+	</div>
+  
+		
+	<div class="margin-left-10">
+		Status: <%= link_to @project.status, "#", :class=>"text-color-red" %>
+	</div>
+		
+	<div class="margin-left-10">
+		Qa Url: <%= link_to @project.qa_url, "#", :class=>"text-color-red" %>
+	</div>
+		
+	<div class="margin-left-10">
+		Uat Url: <%= link_to @project.uat_url, "#", :class=>"text-color-red" %>
+	</div>
+		
+	<div class="margin-left-10">
+		Repo Url: <%= link_to @project.repo_url, "#", :class=>"text-color-red" %>
+	</div>
+	
+	
+	<div class='italic margin-10'><%= simple_format @project.description %></div>
+	
+  <div class="cl-20"></div>
+  
+  <div class="palette-footer margin-left-10">
+  
+    <div class="pull-left text-color-red font-size-12">
+      <%= display_time(@project.created_at) %>
+    </div>
+    
+    <%= content_tag :div, :class=>"pretty small danger btn icon-left icon-trash margin-left-10 pull-right" do %>
+      <%= link_to "Delete", project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, :remote=>true %>
+    <% end %>
+    
+    <%= content_tag :div, :class=>"pretty small medium primary btn icon-left icon-pencil margin-left-10 pull-right" do %>
+      <%= link_to "Edit", edit_project_path(@project), :remote=>true %>
+    <% end %>
+    
+    <div class="cl-10"></div>
+  </div>
+
+</div>

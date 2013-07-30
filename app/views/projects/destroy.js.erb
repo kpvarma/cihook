@@ -1,0 +1,14 @@
+<% if @project.errors.blank? %>
+
+	// Fill the right box with first project details
+	$('#div_project_details').html("<%= escape_javascript(render(:partial=>'show')) %>");
+	
+	// Render health care projects List
+  $('#div_project_collections').html("<%= escape_javascript(render(:partial=>'index')) %>");
+
+<% else %>
+	
+	// Render the show partial to show flash message
+	$('#div_project_details').html("<%= escape_javascript(render(:partial=>'show')) %>");
+	
+<% end %>

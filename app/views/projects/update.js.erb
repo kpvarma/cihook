@@ -1,0 +1,21 @@
+<% if @project.errors.blank? %>
+	
+	// Fill the right box with first item details
+  $('#div_project_details').html("<%= escape_javascript(render(:partial=>"show")) %>");
+	
+	// Refresh the updated item in the list
+  $("#div_project_<%= @project.id %>").html("<%= escape_javascript(render :partial => 'item', :locals => { :project => @project }) %>")
+
+<% else %>
+	
+	// Reload the form partial to display errors
+  $('#div_project_details').html("<%= escape_javascript(render(:partial=>"edit")) %>");
+  
+  // Validate the form
+  validateProjectForm();
+  
+  // Populate Server Side Errors
+  errorMessages = <%= @project.errors.full_messages.to_json.html_safe %>;
+  populateServerSideErrors('project', errorMessages);
+  
+<% end %>

@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="eight columns">
+    <%= form_for Project.new, :url => projects_path, :method => :get, :remote=>true, :html=>{:style=>"margin-bottom:0px;"} do |f| %>
+      <div class="append field">
+        <input class="wide input" type="text" placeholder="Search ..." style="width:240px;" name="project[query]">
+        <div class="pretty medium default btn icon-search">
+          <a href="#" onclick="alert('submitting...')">Search</a>
+        </div>
+      </div>
+    <%- end %>
+  </div>
+
+  <div class="four columns">
+    <%= content_tag :div, :class=>"pretty medium primary btn icon-left icon-plus pull-right" do %>
+      <%= link_to "New Item", new_project_path, :remote=>true %>
+    <% end %>
+  </div>
+</div>

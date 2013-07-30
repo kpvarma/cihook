@@ -1,5 +1,13 @@
 Cihook::Application.routes.draw do
+  
+  # Landing Page
   root :to => 'welcome#index'
+  
+  # Admin page to manage projects
+  resources :projects
+  
+  # Listen to Github hooks
+  get 'hooks/github/:project_id' => 'hooks/github#listen'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
