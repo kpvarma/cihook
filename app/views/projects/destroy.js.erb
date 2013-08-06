@@ -1,14 +1,12 @@
-<% if @project.errors.blank? %>
-
-	// Fill the right box with first project details
-	$('#div_project_details').html("<%= escape_javascript(render(:partial=>'show')) %>");
-	
-	// Render health care projects List
-  $('#div_project_collections').html("<%= escape_javascript(render(:partial=>'index')) %>");
-
+<% if @projects.any? %>
+  // Fill the right box with first project details in the list
+  $('#div_project_details').html("<%= escape_javascript(render(:partial=>'show')) %>");
+  
+  // Rendering the item list
+  $('#div_project_index').html("<%= escape_javascript(render(:partial=>"index")) %>");
+  
 <% else %>
-	
-	// Render the show partial to show flash message
-	$('#div_project_details').html("<%= escape_javascript(render(:partial=>'show')) %>");
-	
+  var noResultsText = "<div class=\"box text-color-grey padding-80 text-align-center\" style=\"height:200px;\">No Projects found.</div>";
+  $('#div_project_details').html(noResultsText);
+  $('#div_project_index').html(noResultsText);  
 <% end %>
